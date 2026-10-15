@@ -1,2 +1,4 @@
 User-agent: *
 Allow: /
+
+Sitemap: https://turtlectrl12113.com/sitemap.xml
