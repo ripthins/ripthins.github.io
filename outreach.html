@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Outreach | Turtle Ctrl, FRC 12113</title>
+  <meta name="description" content="Turtle Ctrl in the community: IRONMAN World Championship volunteering, a Keiki Museum robot demo, and fundraising.">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#FFFFFF" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0A1724" media="(prefers-color-scheme: dark)">
+  <meta property="og:title" content="Outreach | Turtle Ctrl, FRC 12113">
+  <meta property="og:description" content="Turtle Ctrl in the community: IRONMAN World Championship volunteering, a Keiki Museum robot demo, and fundraising.">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Turtle Ctrl, FRC Team 12113">
+  <!-- Share preview image. Update the domain once the custom domain is live. -->
+  <meta property="og:image" content="https://ripthins.github.io/images/og-card.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Turtle Ctrl, FRC Team 12113 from Kona, Hawaiʻi">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+  <link rel="preload" href="fonts/geist-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="css/styles.css?v=20261015c">
+  <link rel="stylesheet" href="css/pages.css?v=20261015c">
+  <link rel="stylesheet" href="css/minibots.css?v=20261015c">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- ===== HEADER (same on every page; only aria-current changes) ===== -->
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a class="wordmark" href="index.html" aria-label="Turtle Ctrl, home" translate="no">Turtle <span class="key">Ctrl</span></a>
+      <nav class="site-nav" aria-label="Main">
+        <ul>
+          <li><a href="team.html">Team</a></li>
+          <li><a href="robot.html">Robot</a></li>
+          <li><a href="outreach.html" aria-current="page">Outreach</a></li>
+          <li class="nav-contact"><a href="#contact" data-contact>Contact</a></li>
+        </ul>
+      </nav>
+      <div class="site-header__cta">
+        <a class="btn btn--secondary btn--sm site-header__contact" href="#contact" data-contact>Contact Us</a>
+        <a class="btn btn--primary btn--sm" href="sponsors.html">Sponsor Us</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- ===== INTRO: floor band, the robot pours lemonade and serves it ===== -->
+    <section class="floor-band" data-minibot aria-labelledby="outreach-title">
+      <div class="container floor-band__inner">
+      <div class="page-intro">
+        <h1 id="outreach-title">Outreach</h1>
+        <!-- DRAFT: Reif to rewrite -->
+        <p class="draft">Robotics is more than the robot. Here’s where we show up in our community.</p>
+      </div>
+      <svg class="floor-band__scene" viewBox="50 70 270 106" style="--w: 270" role="img" aria-label="Animation: a robot pours lemonade into a cup and slides it down the table" focusable="false">
+            <g><circle class="sh-tire" cx="88" cy="165" r="11"/><circle class="sh-hubcap" cx="88" cy="165" r="4"/>
+              <circle class="sh-tire" cx="125" cy="165" r="11"/><circle class="sh-hubcap" cx="125" cy="165" r="4"/>
+              <circle class="sh-tire" cx="162" cy="165" r="11"/><circle class="sh-hubcap" cx="162" cy="165" r="4"/><rect class="sh-alu" x="70" y="131" width="110" height="7"/>
+              <rect class="sh-bumper" x="62" y="137" width="126" height="22" rx="5"/>
+              <text class="sh-text" x="125" y="153" font-size="12" text-anchor="middle">12113</text></g>
+            <rect class="sh-alu" x="150" y="86" width="7" height="46"/>
+            <rect class="sh-alu" x="150" y="84" width="62" height="7" rx="2"/>
+            <rect class="mb-lemon mb-a-stream" x="230" y="102" width="4" height="26"/>
+            <g class="mb-a-pitcher">
+              <rect class="mb-white" x="204" y="86" width="24" height="30" rx="3"/>
+              <rect class="mb-lemon" x="206" y="96" width="20" height="18"/>
+              <polygon class="mb-white" points="228,90 236,84 228,96"/>
+            </g>
+            <rect class="mb-wood" x="214" y="142" width="104" height="6"/>
+            <rect class="mb-wood-dark" x="220" y="148" width="5" height="28"/>
+            <rect class="mb-wood-dark" x="308" y="148" width="5" height="28"/>
+            <rect class="mb-white" x="244" y="151" width="58" height="16" rx="2"/>
+            <text class="mb-label" x="273" y="162" font-size="8" text-anchor="middle">LEMONADE</text>
+            <g class="mb-a-cup">
+              <path d="M224 127 L242 127 L239 142 L227 142 Z" fill="#FFFFFF"/>
+              <rect class="mb-lemon mb-a-fill" x="226" y="131" width="14" height="10"/>
+              <path d="M224 127 L242 127 L239 142 L227 142 Z" fill="none" stroke="#0D1F33" stroke-width="2"/>
+            </g>
+          </svg>
+      </div>
+    </section>
+
+    <!-- ===== STORIES (content.js > outreach). Stories with photos are featured;
+         the rest show as "Coming Up" cards. ===== -->
+    <section class="section" aria-label="Outreach events">
+      <div class="container outreach" data-render="outreach"></div>
+    </section>
+
+    <!-- ===== INVITE (only shows once content.js has a contact email) ===== -->
+    <section class="section section--flush-top" aria-labelledby="invite-title" data-needs-email>
+      <div class="container">
+        <div class="invite">
+          <div>
+            <h2 id="invite-title">Know an Event That Needs a Robot?</h2>
+            <!-- DRAFT: Reif to rewrite -->
+            <p class="draft">Schools, libraries, and community events in Kona: tell us about it.</p>
+          </div>
+          <a class="btn btn--primary" href="#contact" data-contact="Event invitation for Turtle Ctrl">Contact Us</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===== FOOTER (same on every page; contact info + sponsors come from content.js) ===== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a class="wordmark" href="index.html" aria-label="Turtle Ctrl, home" translate="no">Turtle <span class="key">Ctrl</span></a>
+          <p class="footer-team">FRC Team 12113 at Hawaiʻi Technology Academy, Kona campus.</p>
+          <img class="footer-school" src="images/hta-kona-logo.svg" alt="Hawaiʻi Technology Academy Kona" width="120" height="81" loading="lazy">
+        </div>
+        <nav aria-label="Footer">
+          <p class="footer-title mono">Pages</p>
+          <ul class="footer-list">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="team.html">Team</a></li>
+            <li><a href="robot.html">Robot</a></li>
+            <li><a href="outreach.html">Outreach</a></li>
+            <li><a href="sponsors.html">Sponsors</a></li>
+          </ul>
+        </nav>
+        <div id="contact">
+          <p class="footer-title mono">Contact</p>
+          <div data-render="footer-contact"></div>
+          <noscript><p class="footer-ph">Turn on JavaScript to see our contact info.</p></noscript>
+        </div>
+      </div>
+      <div class="footer-sponsors" data-render="footer-sponsors"></div>
+      <p class="footer-base">© <span data-render="year">2026</span> Turtle Ctrl, FRC Team 12113.</p>
+    </div>
+  </footer>
+
+  <script src="content.js"></script>
+  <script src="js/site.js?v=20261015c"></script>
+  <script src="js/minibots.js?v=20261015c"></script>
+</body>
+</html>

@@ -1,0 +1,234 @@
+/* ==========================================================
+   Mini robot scenes, one per page (Team, Robot, Outreach, Sponsors),
+   plus the shared robot drawing colors (.sh-*) also used on Home.
+   Behavior: js/minibots.js plays a scene when it scrolls into view,
+   a few times, then rests. Hover or tap replays it.
+   Motion rules: DESIGN.md > Motion.
+   ========================================================== */
+
+/* ---------- shared drawing colors ---------- */
+.sh-alu { fill: #AEB8C2; }
+.sh-poly { fill: rgba(255, 255, 255, 0.55); stroke: #0D1F33; }
+.sh-navy { fill: #0D1F33; }
+.sh-tire { fill: #20262E; }
+.sh-hubcap { fill: #8B96A3; }
+.sh-bumper { fill: #2457C5; }
+.sh-green { fill: #00AD67; }
+.sh-text { fill: #FFFFFF; font-family: var(--font-mono); font-weight: 700; }
+.sh-fuel { fill: #F5C518; stroke: #B38B00; stroke-width: 2; }
+.sh-hub-body { fill: #2457C5; }
+.sh-hub-frame { fill: #1A3F96; }
+.sh-hub-funnel { fill: #0D1F33; }
+.sh-screen { fill: #0A1724; }
+.sh-screen-num { fill: #F5C518; font-family: var(--font-mono); font-weight: 700; }
+.sh-flash { fill: #F5C518; opacity: 0; }
+.mb-carpet { fill: #C9D2DA; }
+.mb-floor { stroke: #9AA9B8; stroke-width: 2; }
+.mb-white { fill: #FFFFFF; stroke: #0D1F33; stroke-width: 2; }
+.mb-wood { fill: #A87B4F; }
+.mb-wood-dark { fill: #7A5636; }
+.mb-card { fill: #C9A06E; stroke: #8A6A44; stroke-width: 2; }
+.mb-label { fill: #0D1F33; font-family: var(--font-mono); font-weight: 700; }
+.mb-label--brown { fill: #5A3E1E; }
+.mb-lemon { fill: #F5D547; }
+.mb-orange { fill: #F28C28; }
+.mb-red { fill: #D93A3A; }
+.mb-slate { fill: #3A4B5E; }
+.mb-light { fill: #E3E8ED; }
+@media (prefers-color-scheme: dark) {
+  .mb-carpet { fill: #22384E; }
+  .mb-floor { stroke: #4A6580; }
+}
+
+/* ---------- floor band: no frame, the robots stand on the page ----------
+   Same carpet as the Home "New to FRC?" band, so every page shares one floor. */
+.floor-band {
+  --carpet: #C9D2DA;
+  --floor: #9AA9B8;
+  position: relative;
+  overflow: hidden;
+  background: var(--surface);
+  padding-top: var(--s-7);
+}
+.floor-band::after {
+  content: "";
+  display: block;
+  height: 28px;
+  background: var(--carpet);
+  border-top: 2px solid var(--floor);
+}
+@media (prefers-color-scheme: dark) {
+  .floor-band { --carpet: #22384E; --floor: #4A6580; }
+}
+.floor-band__inner { display: grid; gap: var(--s-5); align-items: end; }
+.floor-band .page-intro { padding: 0 0 var(--s-6); }
+.floor-band__scene {
+  display: block;
+  width: calc(var(--w) * 1px);  /* 1 drawing unit = 1px on phones */
+  max-width: 100%;
+  height: auto;
+  justify-self: end;
+  overflow: visible;           /* parts can fall in from above */
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+@media (min-width: 1024px) {
+  .floor-band { padding-top: var(--s-8); }
+  .floor-band__inner { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: var(--s-7); }
+  .floor-band .page-intro { padding-bottom: var(--s-8); }
+  .floor-band__scene { width: calc(var(--w) * 1.5px); }  /* same scale on every page */
+}
+
+/* Team: the robot photographer stands on the floor in front of the team photo */
+.shoot { position: relative; padding-bottom: 92px; }   /* photo ends at camera height */
+.shoot .photo { position: relative; }
+.shoot__bot {
+  position: absolute;
+  left: -12px;
+  bottom: 0;
+  width: calc(var(--w) * 0.9px);
+  height: auto;
+  overflow: visible;
+  z-index: 2;
+  cursor: pointer;
+}
+.photo-flash { position: absolute; inset: 0; background: #FFFFFF; opacity: 0; pointer-events: none; }
+@media (min-width: 1024px) {
+  .shoot { padding-bottom: 160px; }
+  .shoot__bot { left: -112px; width: calc(var(--w) * 1.5px); }
+}
+
+/* every animated piece rotates/scales around its own center unless told otherwise */
+[data-minibot] [class*="mb-a-"] { transform-box: fill-box; transform-origin: center; }
+
+/* ==========================================================
+   Motion (only when allowed, only while .is-playing)
+   ========================================================== */
+@media (prefers-reduced-motion: no-preference) {
+
+  /* ---------- Robot page: parts drop in and the robot assembles ---------- */
+  .is-playing .mb-a-part {
+    animation: mb-drop 0.6s cubic-bezier(0.3, 1.4, 0.5, 1) both;
+    animation-delay: var(--d, 0s);
+    transform-origin: center bottom;
+  }
+  .is-playing .mb-a-rsl { animation: mb-blink 0.8s steps(1, end) 2.4s 6; }
+
+  /* ---------- Team page: group photo ---------- */
+  .is-playing .mb-a-hop { animation: mb-hop 3.6s ease-in-out 3; animation-delay: var(--d, 0s); }
+  .is-playing .mb-a-flash { animation: mb-flash 3.6s ease-out 3; }
+  .is-playing .photo-flash { animation: mb-photo-flash 3.6s ease-out 3; }
+  .is-playing .mb-a-print { animation: mb-print 3.6s ease-out 3; }
+
+  /* ---------- Outreach page: pour a cup and serve it ---------- */
+  .is-playing .mb-a-pitcher { animation: mb-pour 4.5s ease-in-out 3; transform-origin: 30% 20%; }
+  .is-playing .mb-a-stream { animation: mb-stream 4.5s linear 3; transform-origin: center top; }
+  .is-playing .mb-a-fill { animation: mb-fill 4.5s ease-out 3; transform-origin: center bottom; }
+  .is-playing .mb-a-cup { animation: mb-serve 4.5s ease-in-out 3; }
+
+  /* ---------- Sponsors page: mahalo sign ---------- */
+  .is-playing .mb-a-sign { animation: mb-wave 3s ease-in-out 3; transform-origin: center bottom; }
+  .is-playing .mb-a-word1 { animation: mb-word1 3s steps(1, end) 3; }
+  .is-playing .mb-a-word2 { animation: mb-word2 3s steps(1, end) 3; }
+  .is-playing .mb-a-spark { animation: mb-spark 1.5s ease-out 6; animation-delay: var(--d, 0s); }
+}
+
+/* resting states (also what reduced-motion visitors see) */
+.mb-a-flash, .mb-a-stream, .mb-a-print, .mb-a-word2 { opacity: 0; }
+.mb-a-spark { opacity: 0; }
+
+@keyframes mb-drop {
+  0%   { transform: translateY(-140px); opacity: 0; }
+  20%  { opacity: 1; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+@keyframes mb-blink { 50% { fill: #6E4A2A; } }
+
+@keyframes mb-hop {
+  0%, 30%, 52%, 100% { transform: translateY(0); }
+  40% { transform: translateY(-10px); }
+}
+@keyframes mb-flash {
+  0%, 40% { opacity: 0; }
+  42% { opacity: 0.95; }
+  55%, 100% { opacity: 0; }
+}
+@keyframes mb-photo-flash {
+  0%, 41% { opacity: 0; }
+  43% { opacity: 0.85; }
+  60%, 100% { opacity: 0; }
+}
+@keyframes mb-print {
+  0%, 44% { transform: translateY(0); opacity: 0; }
+  48% { opacity: 1; }
+  75% { transform: translateY(-26px); opacity: 1; }
+  90%, 100% { transform: translateY(-30px); opacity: 0; }
+}
+
+@keyframes mb-pour {
+  0%, 15% { transform: rotate(0); }
+  30%, 62% { transform: rotate(48deg); }
+  75%, 100% { transform: rotate(0); }
+}
+@keyframes mb-stream {
+  0%, 30% { opacity: 0; transform: scaleY(0); }
+  36% { opacity: 1; transform: scaleY(1); }
+  60% { opacity: 1; transform: scaleY(1); }
+  64%, 100% { opacity: 0; transform: scaleY(1); }
+}
+@keyframes mb-fill {
+  0%, 32% { transform: scaleY(0); }
+  64%, 100% { transform: scaleY(1); }
+}
+@keyframes mb-serve {
+  0%, 70% { transform: translateX(0); opacity: 1; }
+  88% { transform: translateX(58px); opacity: 1; }
+  96% { transform: translateX(58px); opacity: 0; }
+  100% { transform: translateX(0); opacity: 0; }
+}
+
+@keyframes mb-wave {
+  0%, 100% { transform: translateY(0) rotate(0); }
+  25% { transform: translateY(-8px) rotate(-4deg); }
+  75% { transform: translateY(-8px) rotate(4deg); }
+}
+@keyframes mb-word1 { 0% { opacity: 1; } 50% { opacity: 0; } 100% { opacity: 1; } }
+@keyframes mb-word2 { 0% { opacity: 0; } 50% { opacity: 1; } 100% { opacity: 0; } }
+@keyframes mb-spark {
+  0% { opacity: 0; transform: scale(0.2) rotate(45deg); }
+  30% { opacity: 1; transform: scale(1) rotate(45deg); }
+  100% { opacity: 0; transform: scale(0.6) rotate(45deg); }
+}
+
+/* ---------- Team hero: photo cluster ----------
+   No single photo has the whole team, so four group shots sit together.
+   Phone: 2 columns. Desktop: big photo on top, three below. */
+.collage {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--s-2);
+}
+.collage .photo { margin: 0; aspect-ratio: 1 / 1; }
+.collage .photo img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 60%; }
+.collage__main { grid-column: 1 / -1; aspect-ratio: 16 / 9 !important; }
+.collage__main img { object-position: 50% 45% !important; }
+.collage__wide { grid-column: 1 / -1; aspect-ratio: 2 / 1 !important; }
+.collage__wide img { object-position: 50% 58% !important; }
+.collage .photo-flash { border-radius: var(--r-hold); z-index: 1; }
+@media (min-width: 1024px) {
+  .floor-band__inner--media { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); }
+  .collage { grid-template-columns: repeat(4, 1fr); }
+  .collage__wide { grid-column: span 2; aspect-ratio: auto !important; }
+}
+@media (min-width: 1024px) {
+  /* classroom tile matches the height of the two square tiles beside it */
+  .collage__wide { position: relative; }
+  .collage__wide img { position: absolute; inset: 0; }
+}
+
+/* ---------- Carpet continues into the next section ----------
+   Put .section--carpet on the section right after a floor band (or the Home
+   field band) so the robot's floor runs straight into it. */
+.section--carpet { background: #C9D2DA; }
+@media (prefers-color-scheme: dark) { .section--carpet { background: #22384E; } }

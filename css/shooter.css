@@ -1,0 +1,82 @@
+/* ==========================================================
+   "New to FRC?" field band: a kitbot (left) shoots yellow fuel
+   over the text into the hub (right). A fun extra, not a feature.
+   Markup in index.html, behavior in js/shooter.js.
+   ========================================================== */
+
+.frc-field {
+  --carpet: #C9D2DA;
+  --floor: #9AA9B8;
+  position: relative;
+  overflow: hidden;
+  background: var(--surface);
+  padding-top: var(--s-7);
+}
+/* the field floor, full width */
+.frc-field::after {
+  content: "";
+  display: block;
+  height: 28px;
+  background: var(--carpet);
+  border-top: 2px solid var(--floor);
+}
+
+/* phone: text on top, robot + hub on the floor below it */
+.frc-field__inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: "copy copy" "robot hub";
+  align-items: end;
+  row-gap: var(--s-5);
+}
+.frc-field__copy { grid-area: copy; position: relative; z-index: 2; }   /* text sits in front of the flying fuel */
+.frc-field__copy p { margin: var(--s-3) 0 var(--s-5); color: var(--text-2); max-width: 52ch; }
+.frc-field__robot,
+.frc-field__hub { position: relative; z-index: 3; display: block; height: auto; }
+.frc-field__robot { grid-area: robot; width: 132px; justify-self: start; cursor: pointer; -webkit-tap-highlight-color: transparent; }
+.frc-field__hub { grid-area: hub; width: 92px; justify-self: end; }
+
+/* desktop: robot | text | hub, all standing on the floor */
+@media (min-width: 1024px) {
+  .frc-field { padding-top: var(--s-6); }
+  .frc-field__inner {
+    grid-template-columns: 240px minmax(0, 1fr) 150px;
+    grid-template-areas: "robot copy hub";
+    column-gap: var(--s-7);
+  }
+  .frc-field__copy { align-self: center; padding-bottom: var(--s-5); }
+  .frc-field__robot { width: 240px; }
+  .frc-field__hub { width: 150px; }
+}
+
+/* flying fuel */
+.frc-field__balls { position: absolute; inset: 0; pointer-events: none; z-index: 1; }
+.fuel-ball {
+  position: absolute; left: 0; top: 0;
+  width: var(--ball, 26px); height: var(--ball, 26px);
+  margin: calc(var(--ball, 26px) / -2) 0 0 calc(var(--ball, 26px) / -2);
+  border-radius: 50%;
+  background: #F5C518;
+  border: 2px solid #B38B00;
+  will-change: transform;
+}
+
+/* drawing colors (.sh-*) live in css/minibots.css, shared with the page robots */
+
+@media (prefers-color-scheme: dark) {
+  .frc-field { --carpet: #22384E; --floor: #4A6580; }
+  .sh-poly { fill: rgba(233, 239, 244, 0.12); stroke: #A3B3C2; }
+}
+
+/* flywheel spin, recoil, hub flash */
+.sh-fly { transform-box: fill-box; transform-origin: center; }
+@media (prefers-reduced-motion: no-preference) {
+  .sh-robot.is-shooting .sh-fly { animation: sh-spin 0.45s linear 2; }
+  .sh-robot.is-shooting .sh-body { animation: sh-kick 0.25s var(--ease); }
+  .sh-hub.is-scored .sh-flash { animation: sh-flash 0.6s ease-out; }
+}
+@keyframes sh-spin { to { transform: rotate(360deg); } }
+@keyframes sh-kick { 40% { transform: translateX(-3px); } }
+@keyframes sh-flash { 0% { opacity: 0.55; } 100% { opacity: 0; } }
+
+/* .section--carpet (the floor continuing into the next section) lives in css/minibots.css */
