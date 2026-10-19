@@ -203,12 +203,8 @@ a.marquee__item:hover { color: var(--link); }
 .outreach-item__meta { display: flex; flex-wrap: wrap; align-items: center; gap: var(--s-2) var(--s-4); color: var(--muted); font-size: var(--fs-small); }
 .outreach-item__meta span { display: inline-flex; align-items: center; gap: var(--s-1); }
 .outreach-item__meta svg { width: 1em; height: 1em; }
-.status {
-  font-size: 0.8125rem; font-weight: 700;
-  padding: 1px 7px; border-radius: 2px;
-  border: 1px solid currentColor; color: var(--text-2);
-}
-.status--done { background: var(--green-500); border-color: var(--green-500); color: var(--navy-900); }
+.status { font-weight: 700; color: var(--text-2); }
+.status--done { color: var(--link); }
 .outreach-item h2 { font-size: clamp(1.5rem, 1.2rem + 1.2vw, 2.25rem); margin-top: var(--s-3); }
 .outreach-item p { margin-top: var(--s-3); color: var(--text-2); max-width: 62ch; }
 .outreach-photos { display: grid; gap: var(--s-3); grid-template-columns: repeat(2, 1fr); }
@@ -272,7 +268,7 @@ a.marquee__item:hover { color: var(--link); }
 /* ---------- Team: why "Turtle Ctrl" ---------- */
 .name-story { display: grid; gap: var(--s-6); align-items: center; }
 .name-story__sketch { margin: 0; max-width: 440px; }
-.name-story__sketch .photo { --ratio: 1000 / 828; background: #FFFFFF; }
+.name-story__sketch .photo { --ratio: 4 / 3; }
 .name-story__copy .draft p + p,
 .name-story__copy > p + p { margin-top: var(--s-3); }
 .name-story__copy h2 { margin-bottom: var(--s-5); }
@@ -319,7 +315,10 @@ a.marquee__item:hover { color: var(--link); }
   list-style: none; margin: var(--s-5) 0 0; padding: 0;
   display: flex; flex-wrap: wrap; gap: var(--s-3);
 }
-.keys .key { font-family: var(--font-sans); font-size: 0.9375rem; font-weight: 600; padding: 0.45em 0.75em; box-shadow: none; border: 1px solid var(--line-strong); border-radius: var(--r-press); background: transparent; color: var(--text); }
+/* Plain text list, so nothing here looks clickable */
+.keys { gap: 0 0.4em; }
+.keys .key { display: inline; font-family: var(--font-sans); font-size: 1.0625rem; font-weight: 700; padding: 0; border: 0; border-radius: 0; box-shadow: none; background: none; color: var(--text); }
+.keys .key:not(:last-child)::after { content: ","; font-weight: 400; }
 
 /* ---------- Team: parent FAQ ---------- */
 .faq { margin-top: var(--s-5); border-top: 1px solid var(--line); }
