@@ -137,3 +137,8 @@
 @keyframes kb-roll {
   to { transform: rotate(360deg); }
 }
+
+/* On the navy hero the kitbot stands on the band itself, no gray box */
+.hero .kb-stage { background: transparent; border-radius: 0; }
+.hero .kb-shadow { background: radial-gradient(closest-side, rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0)); }
+.hero .kb-caption { padding-inline: 0; }

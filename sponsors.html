@@ -23,9 +23,9 @@
   <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
   <link rel="preload" href="fonts/geist-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="css/styles.css?v=20261015c">
-  <link rel="stylesheet" href="css/pages.css?v=20261015c">
-  <link rel="stylesheet" href="css/minibots.css?v=20261015c">
+  <link rel="stylesheet" href="css/styles.css?v=20261018b">
+  <link rel="stylesheet" href="css/pages.css?v=20261018b">
+  <link rel="stylesheet" href="css/minibots.css?v=20261018b">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -51,9 +51,9 @@
 
   <main id="main">
 
-    <!-- ===== THE ASK: floor band, the robot waves a MAHALO / THANK YOU sign ===== -->
-    <section class="floor-band" data-minibot aria-labelledby="sponsors-title">
-      <div class="container floor-band__inner">
+    <!-- ===== THE ASK ===== -->
+    <section class="intro" aria-labelledby="sponsors-title">
+      <div class="container intro__grid">
       <div class="page-intro">
         <h1 id="sponsors-title">Sponsor Turtle Ctrl</h1>
         <!-- DRAFT: Reif to rewrite -->
@@ -63,25 +63,6 @@
           <a class="btn btn--secondary" href="#packet" data-packet-link>Sponsor Packet</a>
         </div>
       </div>
-      <svg class="floor-band__scene" viewBox="90 20 200 156" style="--w: 200" role="img" aria-label="Animation: a robot holds up a sign that switches between Mahalo and Thank You" focusable="false">
-            <g transform="translate(35 0)">
-              <g><circle class="sh-tire" cx="88" cy="165" r="11"/><circle class="sh-hubcap" cx="88" cy="165" r="4"/>
-              <circle class="sh-tire" cx="125" cy="165" r="11"/><circle class="sh-hubcap" cx="125" cy="165" r="4"/>
-              <circle class="sh-tire" cx="162" cy="165" r="11"/><circle class="sh-hubcap" cx="162" cy="165" r="4"/><rect class="sh-alu" x="70" y="131" width="110" height="7"/>
-              <rect class="sh-bumper" x="62" y="137" width="126" height="22" rx="5"/>
-              <text class="sh-text" x="125" y="153" font-size="12" text-anchor="middle">12113</text></g>
-              <rect class="sh-alu" x="152" y="84" width="7" height="48"/>
-              <g class="mb-a-sign">
-                <rect class="mb-white" x="92" y="36" width="126" height="50" rx="8"/>
-                <text class="mb-label mb-a-word1" x="155" y="68" font-size="20" text-anchor="middle">MAHALO</text>
-                <text class="mb-label mb-a-word2" x="155" y="67" font-size="16" text-anchor="middle">THANK YOU</text>
-              </g>
-            </g>
-            <rect class="mb-a-spark" style="--d:0s" x="112" y="30" width="9" height="9" fill="#00AD67"/>
-            <rect class="mb-a-spark" style="--d:0.5s" x="266" y="40" width="8" height="8" fill="#6EC1E4"/>
-            <rect class="mb-a-spark" style="--d:1s" x="274" y="98" width="7" height="7" fill="#F5C518"/>
-            <rect class="mb-a-spark" style="--d:0.75s" x="104" y="100" width="7" height="7" fill="#00AD67"/>
-          </svg>
       </div>
     </section>
 
@@ -113,10 +94,10 @@
         <h2 id="funds-title">What Your Support Funds</h2>
         <!-- DRAFT: Reif to rewrite -->
         <ul class="funds draft">
-          <li><span class="funds__icon" data-icon="gear"></span><h3>Robot Parts</h3><p>Motors, electronics, aluminum, and the SDS MK5n swerve modules our robot drives on.</p></li>
-          <li><span class="funds__icon" data-icon="ticket"></span><h3>Event Registration</h3><p>Entry for the Pikes Peak and Hawaii Regionals.</p></li>
-          <li><span class="funds__icon" data-icon="plane"></span><h3>Travel</h3><p>Getting the team, and a robot packed in a suitcase, to Colorado Springs and Honolulu.</p></li>
-          <li><span class="funds__icon" data-icon="heart"></span><h3>Outreach</h3><p>Robot demos for keiki and volunteering at community events in Kona.</p></li>
+          <li><h3>Robot Parts</h3><p>Motors, electronics, aluminum, and the SDS MK5n swerve modules our robot drives on.</p></li>
+          <li><h3>Event Registration</h3><p>Entry for the Pikes Peak and Hawaii Regionals.</p></li>
+          <li><h3>Travel</h3><p>Getting the team, and a robot packed in a suitcase, to Colorado Springs and Honolulu.</p></li>
+          <li><h3>Outreach</h3><p>Robot demos for keiki and volunteering at community events in Kona.</p></li>
         </ul>
         <!-- DRAFT: Reif to rewrite -->
         <p class="funds__note draft">Not just money: parts, tools, machining, and services help just as much.</p>
@@ -179,7 +160,6 @@
   </footer>
 
   <script src="content.js"></script>
-  <script src="js/site.js?v=20261015c"></script>
-  <script src="js/minibots.js?v=20261015c"></script>
+  <script src="js/site.js?v=20261018b"></script>
 </body>
 </html>

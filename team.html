@@ -23,9 +23,9 @@
   <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
   <link rel="preload" href="fonts/geist-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="css/styles.css?v=20261015c">
-  <link rel="stylesheet" href="css/pages.css?v=20261015c">
-  <link rel="stylesheet" href="css/minibots.css?v=20261015c">
+  <link rel="stylesheet" href="css/styles.css?v=20261018b">
+  <link rel="stylesheet" href="css/pages.css?v=20261018b">
+  <link rel="stylesheet" href="css/minibots.css?v=20261018b">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -51,10 +51,9 @@
 
   <main id="main">
 
-    <!-- ===== INTRO: floor band. The robot photographs the team photo; when its
-         flash fires, the photo flashes too (css/minibots.css + js/minibots.js). ===== -->
-    <section class="floor-band" data-minibot aria-labelledby="team-title">
-      <div class="container floor-band__inner floor-band__inner--media">
+    <!-- ===== INTRO ===== -->
+    <section class="intro" aria-labelledby="team-title">
+      <div class="container intro__grid">
       <div class="page-intro">
         <p class="page-intro__label mono" translate="no">FRC Team 12113</p>
         <h1 id="team-title">Meet the Team</h1>
@@ -64,7 +63,7 @@
           <a class="btn btn--primary" href="#join">Join the Team</a>
         </div>
       </div>
-      <div class="shoot">
+      <div class="intro__media">
         <!-- Team photo cluster: no single photo has all 12 of us, so these four group
              shots together cover the team. Swap in a full-team photo here when you have one. -->
         <div class="collage">
@@ -80,26 +79,7 @@
           <figure class="photo">
             <img src="images/photos/ironman-sunset.jpg" alt="Four team members at an IRONMAN ice station at sunset" width="1200" height="1200" decoding="async">
           </figure>
-          <span class="photo-flash" aria-hidden="true"></span>
         </div>
-        <svg class="shoot__bot" viewBox="20 20 150 156" style="--w: 150" role="img" aria-label="Animation: a robot with a camera takes the team photo" focusable="false">
-            <g transform="translate(-34 0)">
-              <g><circle class="sh-tire" cx="88" cy="165" r="11"/><circle class="sh-hubcap" cx="88" cy="165" r="4"/>
-              <circle class="sh-tire" cx="125" cy="165" r="11"/><circle class="sh-hubcap" cx="125" cy="165" r="4"/>
-              <circle class="sh-tire" cx="162" cy="165" r="11"/><circle class="sh-hubcap" cx="162" cy="165" r="4"/><rect class="sh-alu" x="70" y="131" width="110" height="7"/>
-              <rect class="sh-bumper" x="62" y="137" width="126" height="22" rx="5"/>
-              <text class="sh-text" x="125" y="153" font-size="12" text-anchor="middle">12113</text></g>
-              <rect class="sh-alu" x="122" y="80" width="7" height="52"/>
-              <g class="mb-a-print">
-                <rect class="mb-white" x="115" y="54" width="20" height="22" rx="1"/>
-                <rect x="118" y="57" width="14" height="11" fill="#6EC1E4"/>
-              </g>
-              <rect class="sh-navy" x="104" y="54" width="44" height="28" rx="5"/>
-              <rect class="mb-light" x="110" y="48" width="12" height="6" rx="1"/>
-              <circle cx="150" cy="68" r="10" fill="#2457C5" stroke="#AEB8C2" stroke-width="3"/>
-              <circle class="mb-a-flash" cx="164" cy="68" r="18" fill="#FFFFFF"/>
-            </g>
-          </svg>
       </div>
       </div>
     </section>
@@ -250,7 +230,6 @@
   </footer>
 
   <script src="content.js"></script>
-  <script src="js/site.js?v=20261015c"></script>
-  <script src="js/minibots.js?v=20261015c"></script>
+  <script src="js/site.js?v=20261018b"></script>
 </body>
 </html>
