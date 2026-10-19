@@ -52,13 +52,14 @@
 .marquee__set { display: flex; gap: var(--s-6); list-style: none; margin: 0; padding: 0; }
 .marquee__item {
   display: flex; align-items: center; justify-content: center;
-  height: 56px; padding: 0 var(--s-4);
+  height: 72px; padding: 0 var(--s-4);
   color: var(--text); font-weight: 700; font-size: 1.0625rem; white-space: nowrap; text-decoration: none;
 }
 a.marquee__item:hover { color: var(--link); }
 /* logos are usually dark: give image logos a white backing in dark mode */
 @media (prefers-color-scheme: dark) { .marquee__item img { background: #FFFFFF; padding: 6px 10px; border-radius: 2px; } }
-.marquee__item img { max-height: 40px; width: auto; max-width: 180px; object-fit: contain; }
+.marquee__item { gap: var(--s-3); }
+.marquee__item img { height: 56px; width: auto; max-width: 120px; object-fit: contain; }
 
 
 @media (prefers-reduced-motion: no-preference) {

@@ -88,7 +88,7 @@ window.SITE = {
   /* ---------- Sponsors (logos go in /images/sponsors) ---------- */
   sponsors: [
     { name: "Big Idea Designs LLC",         logo: "", url: "" },
-    { name: "Scada and Control Systems LLC", logo: "", url: "" },
+    { name: "Scada and Control Systems LLC", logo: "images/sponsors/scada-control-systems.png", url: "" },
   ],
 
   /* ---------- Roster: FIRST NAMES ONLY ---------- */

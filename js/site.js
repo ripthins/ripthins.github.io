@@ -220,11 +220,15 @@
     if (!sponsors.length) { hideSection(root); return; }
 
     function item(s) {
-      var inner = s.logo ? el("img", { src: s.logo, alt: s.name, height: "40", decoding: "async" }) : s.name;
+      // logo (if there is one) next to the name, so small logos are still easy to recognize
+      var inner = [
+        s.logo ? el("img", { src: s.logo, alt: "", height: "56", decoding: "async" }) : null,
+        el("span", { text: s.name })
+      ];
       return el("li", null, [
         s.url
-          ? el("a", { class: "marquee__item", href: s.url, rel: "noopener" }, [inner])
-          : el("span", { class: "marquee__item" }, [inner])
+          ? el("a", { class: "marquee__item", href: s.url, rel: "noopener" }, inner)
+          : el("span", { class: "marquee__item" }, inner)
       ]);
     }
 

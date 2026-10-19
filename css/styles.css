@@ -445,7 +445,9 @@ a:hover { color: var(--green-800); }
   text-decoration: none;
 }
 a.logo-tile:hover { border-color: var(--line-strong); }
-.logo-tile img { max-height: 100%; width: auto; max-width: 100%; object-fit: contain; }
+/* the logo fills the tile's inner area without ever changing the tile's size */
+.logo-tile { position: relative; }
+.logo-tile img { position: absolute; inset: var(--s-4); width: calc(100% - 2 * var(--s-4)); height: calc(100% - 2 * var(--s-4)); object-fit: contain; }
 .logo-tile .ph__label strong { color: #3A4B5E; }
 .logo-tile--ph { border: 2px dashed #9AA9B8; color: #5A6A7B; }
 .logo-tile--open {
